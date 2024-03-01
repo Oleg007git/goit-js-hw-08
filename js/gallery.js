@@ -71,7 +71,7 @@ function createMarkup(arr) {
     .map(
       ({ preview, original, description }) => `
       <li class="gallery-item">
-        <a class="gallery-link" href="${original}">
+        <a class="gallery-link" href="${preview}" alt="${description}">
           <img class="gallery-image" src="${preview}" alt="${description}" />
         </a>
       </li>
@@ -81,3 +81,40 @@ function createMarkup(arr) {
 }
 
 galleryUL.innerHTML = createMarkup();
+
+galleryUL.addEventListener('click', handleClick);
+
+// function handleClick(event) {
+//   event.preventDefault();
+//   if (event.target === event.currentTarget) return;
+//   const original = event.target.parentNode.href;
+//   const preview = event.target.src;
+//   const description = event.target.alt;
+// }
+// const instance = basicLightbox.create(`
+//       <div class="modal">
+//         <a class="gallery-link" href="${original}">
+//           <img class="gallery-image" src="${preview}" alt="${description}" />
+//         </a>
+//       </div>
+//     `);
+
+// instance.show();
+function handleClick(event) {
+  event.preventDefault();
+  if (event.target.tagName === 'IMG') {
+    const original = event.target.getAttribute('data-source');
+    const preview = event.target.src;
+    const description = event.target.alt;
+
+    const instance = basicLightbox.create(`
+      <div class="modal">
+        <a class="gallery-link" href="${original}">
+          <img class="gallery-image" src="${preview}" alt="${description}" />
+        </a>
+      </div>
+    `);
+
+    instance.show();
+  }
+}
