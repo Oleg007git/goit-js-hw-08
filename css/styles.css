@@ -12,6 +12,7 @@ ol {
   gap: 20px;
   margin: 20px;
   padding: auto, 10px;
+  justify-content: center;
 }
 .gallery-image {
   width: 300px;
