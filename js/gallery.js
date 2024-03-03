@@ -71,7 +71,7 @@ function createMarkup(arr) {
     .map(
       ({ preview, original, description }) => `
       <li class="gallery-item">
-        <a class="gallery-link" href="${original}" alt="${description}">
+        <a class="gallery-link" href="${original}">
           <img class="gallery-image" src="${preview}" alt="${description}" />
         </a>
       </li>
@@ -96,9 +96,7 @@ function handleClick(event) {
 
   const instance = basicLightbox.create(`
     <div class="modal">
-      <a class="gallery-link" href="${original}">
-        <img class="gallery-image" src="${preview}" alt="${description}" />
-      </a>
+        <img class="gallery-image" src="${original}"/>
     </div>
   `);
 
