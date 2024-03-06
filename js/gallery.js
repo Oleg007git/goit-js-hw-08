@@ -95,11 +95,8 @@ function handleClick(event) {
   const description = target.getAttribute('alt');
 
   const instance = basicLightbox.create(`
-    <div class="modal">
         <img class="gallery-image" src="${original}"/>
-    </div>
   `);
-
   instance.element().addEventListener('click', function (event) {
     if (event.target === event.currentTarget) {
       instance.close();
